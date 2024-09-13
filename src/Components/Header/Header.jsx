@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -44,16 +45,22 @@ function Header() {
             <NavDropdown
               title={
                 <img
-                  src="public/images/userLogo.jpeg"
+                  src="src/assets/images/userLogo.jpeg"
                   alt="User Avatar"
                   className="avatarImg"
                 />
               }
               id="collapsible-nav-dropdown"
             >
-              <NavDropdown.Item href="/UserDetails">Profile</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Settings</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Logout</NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/UserDetails">Profile</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/UserDetails">Setting</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/UserDetails">Logout</Link>
+              </NavDropdown.Item>
               <NavDropdown.Divider />
             </NavDropdown>
           </Nav>
