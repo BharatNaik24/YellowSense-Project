@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Jobs from "./Components/Jobs/Jobs";
 import "./App.css";
 import JobDetails from "./Components/JobDetails/JobDetails";
@@ -10,7 +10,7 @@ import Footer from "./Components/Footer/Footer";
 
 const App = () => {
   return (
-    <Router>
+    <>
       <Header />
       <div className="mt-5">
         <Routes>
@@ -22,7 +22,7 @@ const App = () => {
         </Routes>
       </div>
       <Footer />
-    </Router>
+    </>
   );
 };
 
