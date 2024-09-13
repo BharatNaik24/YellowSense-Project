@@ -28,6 +28,8 @@ function Header() {
               href="/jobs"
               style={{
                 fontSize: "20px",
+                textDecoration: "none",
+                color: "black",
               }}
             >
               Jobs
@@ -36,6 +38,8 @@ function Header() {
               href="/bookmarks"
               style={{
                 fontSize: "20px",
+                textDecoration: "none",
+                color: "black",
               }}
             >
               Bookmarks
