@@ -1,0 +1,37 @@
+
+.bookmark-list {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.bookmarked-jobs  {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+}
+.bookmark-list h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.bookmark-item {
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bookmark-item h3 {
+  margin: 0 0 10px;
+  font-size: 1.25rem;
+  color: #007bff;
+}
+
+.bookmark-item p {
+  margin: 5px 0;
+}

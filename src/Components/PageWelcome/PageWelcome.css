@@ -1,0 +1,34 @@
+.landingPageImg {
+    height: 50vh;
+    width: auto;
+    border-radius: 0;
+}
+.homeContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #000000;
+     background-color: #000000;
+     color: #fff;
+    border-radius: 20px;
+}
+.mainHomeContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.landingPageLogo {
+    border-radius: 10px;
+}
+
+.eachCon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    width: 50%;
+    padding: 10px;
+}
