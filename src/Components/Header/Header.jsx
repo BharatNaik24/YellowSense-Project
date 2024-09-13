@@ -41,11 +41,12 @@ function Header() {
               Bookmarks
             </Nav.Link>
           </Nav>
+
           <Nav className="ms-auto">
             <NavDropdown
               title={
                 <img
-                  src="src/assets/images/userLogo.jpeg"
+                  src="https://i.postimg.cc/7Y1JBDHX/ab262296-87d5-4d0a-b118-66d4f87a4d2f.jpg"
                   alt="User Avatar"
                   className="avatarImg"
                 />
