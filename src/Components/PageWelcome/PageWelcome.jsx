@@ -1,7 +1,7 @@
 import "./PageWelcome.css";
 import { Link } from "react-router-dom";
 
-function PageWelcome() {
+export default function PageWelcome() {
   return (
     <div className="container mainHomeContainer">
       <div className="homeContainer">
@@ -37,5 +37,3 @@ function PageWelcome() {
     </div>
   );
 }
-
-export default PageWelcome;
