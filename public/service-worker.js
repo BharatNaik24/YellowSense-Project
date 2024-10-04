@@ -38,28 +38,47 @@ self.addEventListener("activate", (event) => {
   return self.clients.claim(); // Claim clients immediately
 });
 
-// Fetch event: cache with network fallback
+// Fetch event: cache with network fallback, including dynamic routes
 self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      // Return cache if found, else fetch from network
-      return (
-        response ||
-        fetch(event.request)
-          .then((networkResponse) => {
-            // Cache the fetched response dynamically
+  const requestUrl = new URL(event.request.url);
+
+  // Handle dynamic routes like /jobs/:id
+  if (requestUrl.pathname.startsWith("/jobs/")) {
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        return (
+          response ||
+          fetch(event.request).then((networkResponse) => {
             return caches.open(CACHE_NAME).then((cache) => {
               cache.put(event.request, networkResponse.clone());
               return networkResponse;
             });
           })
-          .catch(() => {
-            // Fallback logic (optional), like serving an offline page
-            if (event.request.mode === "navigate") {
-              return caches.match("/index.html");
-            }
-          })
-      );
-    })
-  );
+        );
+      })
+    );
+  } else {
+    // Handle static assets and other requests
+    event.respondWith(
+      caches.match(event.request).then((response) => {
+        return (
+          response ||
+          fetch(event.request)
+            .then((networkResponse) => {
+              // Dynamically cache other requests (optional)
+              return caches.open(CACHE_NAME).then((cache) => {
+                cache.put(event.request, networkResponse.clone());
+                return networkResponse;
+              });
+            })
+            .catch(() => {
+              // Fallback to the cache if network fails
+              if (event.request.mode === "navigate") {
+                return caches.match("/index.html");
+              }
+            })
+        );
+      })
+    );
+  }
 });
