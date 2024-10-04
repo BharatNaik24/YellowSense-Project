@@ -37,7 +37,7 @@ export default defineConfig({
               cacheName: "api-cache",
               expiration: {
                 maxEntries: 50,
-                maxAgeSeconds: 86400, // 1 day
+                maxAgeSeconds: 86400, // 1 days
               },
             },
           },
