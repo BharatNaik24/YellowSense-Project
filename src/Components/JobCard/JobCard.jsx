@@ -9,6 +9,7 @@ import { CiBookmark } from "react-icons/ci";
 import { useState } from "react";
 import { useBookmark } from "../../Context/BookmarkContext ";
 import "./JobCard.css";
+import { useSwipeable } from "react-swipeable";
 
 const JobCard = ({ job }) => {
   const [hideContent, setHideContent] = useState(false);
@@ -16,9 +17,7 @@ const JobCard = ({ job }) => {
   const { addBookmark, removeBookmark, isBookmarked } = useBookmark();
   const isJobBookmarked = isBookmarked(job.id);
 
-  const handleBookmark = (e) => {
-    e.stopPropagation();
-
+  const handleBookmark = () => {
     if (isJobBookmarked) {
       removeBookmark(job.id);
     } else {
@@ -26,13 +25,19 @@ const JobCard = ({ job }) => {
     }
   };
 
-  const handleHideContent = (e) => {
-    e.stopPropagation();
+  const handleHideContent = () => {
     setHideContent(!hideContent);
   };
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleHideContent(),
+    onSwipedRight: () => handleBookmark(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
+
   return (
-    <div className="assds">
+    <div {...handlers} className="assds">
       <div
         className="job-card mb-3"
         onClick={() => !hideContent && navigate(`/jobs/${job.id}`)}
@@ -80,7 +85,10 @@ const JobCard = ({ job }) => {
               </div>
               <div>
                 <button
-                  onClick={handleHideContent}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleHideContent();
+                  }}
                   className="customBtn"
                   aria-label={
                     hideContent ? "Show job details" : "Hide job details"
@@ -95,7 +103,10 @@ const JobCard = ({ job }) => {
                   )}
                 </button>
                 <button
-                  onClick={handleBookmark}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleBookmark();
+                  }}
                   className="customBtn"
                   aria-label={
                     isJobBookmarked ? "Remove bookmark" : "Add bookmark"
