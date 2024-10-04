@@ -18,7 +18,7 @@
 
 @media screen and (max-width:992px) {
     .job-card {
-        min-width: 500px;
+        min-width: 350px;
         font-size: 12px;
     }
 }
