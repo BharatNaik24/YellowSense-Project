@@ -7,6 +7,8 @@ const urlsToCache = [
   "/static/js/bundle.js",
   "/static/js/main.js",
   "/styles.css",
+  "/bookmarks",
+  "/jobs",
 ];
 
 self.addEventListener("install", (event) => {
